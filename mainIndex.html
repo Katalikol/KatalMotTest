@@ -75,9 +75,9 @@
          margin-top: 20px;
       }
 
-      /* Для кнопок "Товары" и "Розыгрыши" */
+      /* Основные кнопки */
       .main-btn {
-         width: 400px;  /* Увеличена ширина кнопок */
+         width: 400px;  
          height: 80px;
          font-size: 20px;
          font-weight: 500;
@@ -85,36 +85,74 @@
          margin: 15px 0;
          border-radius: 10px;
          transition: background-color 0.3s ease, transform 0.1s ease;
-         background-color: inherit; /* Сохраняем изначальный цвет */
-         color: inherit; /* Сохраняем изначальный цвет текста */
+         background-color: inherit;
+         color: inherit;
       }
 
       .products-btn {
-         background-color: #ffb6b6;  /* Нежно-красный */
+         background-color: #ffb6b6;  
          color: white;
       }
 
       .raffles-btn {
-         background-color: #ffbc80;  /* Нежно-оранжевый */
+         background-color: #ffbc80;  
          color: white;
       }
 
       .main-btn:active {
-         background-color: #f08c8c;  /* Темнее при нажатии на 10% для красной */
-         transform: scale(0.98);  /* Немного уменьшаем кнопку при нажатии */
+         background-color: #f08c8c;  
+         transform: scale(0.98);  
       }
 
-      .products-btn:active {
-         background-color: #f08c8c;  /* Темнее при нажатии */
+      /* Стиль кнопок в меню товаров */
+      .product-btn {
+         width: 250px;  /* В 2.5 раза шире */
+         height: 100px;
+         font-size: 18px;
+         font-weight: 500;
+         margin: 15px 0;
+         background-color: #a0c4ff;  /* Нежно-синий */
+         color: white;
+         display: flex;
+         flex-direction: column;
+         justify-content: center;
+         align-items: center;
+         border-radius: 10px;
+         transition: background-color 0.3s ease, transform 0.1s ease;
       }
 
-      .raffles-btn:active {
-         background-color: #f29a60;  /* Темнее для оранжевого */
+      .product-btn h3 {
+         margin: 0;
+         font-size: 18px;
+         text-align: center;
       }
 
-      /* Убираем hover стили, чтобы кнопки не меняли цвет */
-      .main-btn:hover {
-         background-color: inherit;  /* Цвет остается прежним */
+      .product-btn:active {
+         background-color: #8cb4e5;  
+         transform: scale(0.98);
+      }
+
+      /* Кнопка "Назад" */
+      .back-btn {
+         position: absolute;
+         top: 10px;
+         right: 10px;
+         background-color: #ffb6b6;  
+         color: white;
+         width: 120px;
+         height: 50px;
+         font-size: 18px;
+         font-weight: 500;
+         border-radius: 10px;
+         display: flex;
+         justify-content: center;
+         align-items: center;
+         cursor: pointer;
+         transition: background-color 0.3s ease, transform 0.1s ease;
+      }
+
+      .back-btn:active {
+         background-color: #f08c8c;
       }
 
       #error {
@@ -125,7 +163,7 @@
     </style>
 </head>
 <body>
-     <div id="main">
+    <div id="main">
        <div id="header">
          <img src="https://cdn-icons-png.flaticon.com/128/479/479353.png" alt="Logo">
          <h1>TestKatalMotors</h1>
@@ -136,20 +174,52 @@
          <button class="main-btn products-btn" id="goToProducts">Товары</button>
          <button class="main-btn raffles-btn" id="goToRaffles">Розыгрыши</button>
        </div>
-     </div>
+    </div>
 
-     <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <!-- Меню товаров -->
+    <div id="productsMenu" style="display: none;">
+       <div id="header">
+         <img src="https://cdn-icons-png.flaticon.com/128/479/479353.png" alt="Logo">
+         <h1>TestKatalMotors</h1>
+       </div>
 
-     <script>
+       <button class="back-btn" id="goBack">Назад</button>
+
+       <div id="content">
+         <h1>Меню товаров</h1>
+         <button class="product-btn">
+            <h3>Масло KM</h3>
+         </button>
+         <button class="product-btn">
+            <h3>Трансмиссионное масло</h3>
+         </button>
+       </div>
+    </div>
+
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+
+    <script>
         let tg = window.Telegram.WebApp;
         tg.expand();
 
-        // Пример кнопок, которые будут что-то делать в будущем
+        // Показать меню товаров
         document.getElementById("goToProducts").addEventListener("click", () => {
+            document.getElementById("main").style.display = "none";  // Скрыть главное меню
+            document.getElementById("productsMenu").style.display = "flex";  // Показать меню товаров
         });
 
-        document.getElementById("goToRaffles").addEventListener("click", () => {
+        // Вернуться в главное меню
+        document.getElementById("goBack").addEventListener("click", () => {
+            document.getElementById("main").style.display = "flex";  // Показать главное меню
+            document.getElementById("productsMenu").style.display = "none";  // Скрыть меню товаров
         });
-     </script>
+
+        // Пример кнопок, которые пока ничего не делают
+        document.querySelectorAll(".product-btn").forEach((btn) => {
+            btn.addEventListener("click", () => {
+                // Пока ничего не происходит при нажатии
+            });
+        });
+    </script>
 </body>
 </html>
