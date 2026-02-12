@@ -34,7 +34,7 @@
          height: 100%;
       }
 
-      #main {
+      #main, #mainMenu {
          width: 100%;
          padding: 10px 20px;
          display: flex;
@@ -51,7 +51,7 @@
          justify-content: flex-start;
          width: 100%;
          padding: 0;
-         margin-bottom: 10px; /* Уменьшаем отступ снизу */
+         margin-bottom: 10px; 
       }
 
       #header img {
@@ -68,17 +68,17 @@
       #content {
          width: 100%;
          text-align: center;
-         margin-top: 30px; /* Поднимаем текст немного выше */
+         margin-top: 30px;
       }
 
       p {
          width: 350px;
-         margin: 10px auto; /* Отступ для текста */
+         margin: 10px auto;
          text-align: center;
       }
 
       h1 {
-         margin-top: 20px; /* Снижаем заголовок */
+         margin-top: 20px;
       }
 
       input {
@@ -87,17 +87,17 @@
          margin: 15px 2.5%;
          padding: 15px 10px;
          font-size: 14px;
-         border: 2px solid #ccc; /* Серый цвет по умолчанию */
+         border: 2px solid #ccc;
          border-radius: 5px;
          transition: border-color 0.3s ease;
       }
 
       input:focus {
-         border-color: #a8e6cf; /* Нежно-зеленый при фокусе */
+         border-color: #a8e6cf;
       }
 
       input.error {
-         border-color: #ff6b6b; /* Нежно-красный цвет, если ошибка */
+         border-color: #ff6b6b;
       }
 
       button {
@@ -106,22 +106,26 @@
          margin-top: 20px;
          height: 60px;
          width: 200px;
-         font-size: 16px; /* Уменьшаем размер текста */
+         font-size: 16px;
          font-weight: 500;
          cursor: pointer;
          transition: all 500ms ease;
          color: white;
-         background-color: #a8e6cf; /* Нежно-зеленая кнопка */
+         background-color: #a8e6cf;
       }
 
       button:hover {
-         background-color: #80c8a6; /* При наведении немного темнее */
+         background-color: #80c8a6;
       }
 
       #error {
          color: red;
          margin: 10px 0;
          font-size: 14px;
+      }
+
+      #mainMenu {
+         display: none;  /* Основное меню скрыто по умолчанию */
       }
     </style>
 </head>
@@ -143,6 +147,19 @@
        </div>
      </div>
 
+     <!-- Основное меню -->
+     <div id="mainMenu">
+       <div id="header">
+         <img src="https://cdn-icons-png.flaticon.com/128/479/479353.png" alt="Logo">
+         <h1>TestKatalMotors</h1>
+       </div>
+       <div id="content">
+         <h1>Это основное меню</h1>
+         <!-- Здесь можно добавить кнопки для перехода в другие разделы -->
+         <button id="goToProfile">Перейти в профиль</button>
+       </div>
+     </div>
+
      <script src="https://telegram.org/js/telegram-web-app.js"></script>
 
      <script>
@@ -153,18 +170,18 @@
         let userNameInput = document.getElementById("user_name");
 
         register.addEventListener("click", (e) => {
-            e.preventDefault();  // Чтобы не отправлялась форма
+            e.preventDefault();
 
             let name = userNameInput.value.trim();
             let error = document.getElementById("error");
-            
+
             // Сброс ошибки
             error.innerText = "";
             userNameInput.classList.remove('error');
 
             if (name.length < 2) {
                 error.innerText = "Имя слишком короткое";
-                userNameInput.classList.add('error');  // Добавляем класс для красной обводки
+                userNameInput.classList.add('error');
                 return;
             }
 
@@ -175,8 +192,24 @@
         });
 
         userNameInput.addEventListener('focus', () => {
-            userNameInput.classList.remove('error');  // Убираем ошибку, если снова фокусируемся
+            userNameInput.classList.remove('error');
         });
+
+        // После успешной регистрации показываем основное меню
+        function showMainMenu() {
+            document.getElementById("main").style.display = "none";
+            document.getElementById("mainMenu").style.display = "block";
+        }
+
+        // Переход в профиль
+        document.getElementById("goToProfile").addEventListener("click", () => {
+            alert("Переход в профиль");  // Заменить на реальный функционал
+        });
+
+        // Проверяем, был ли пользователь зарегистрирован ранее
+        if (localStorage.getItem("isRegistered") === "true") {
+            showMainMenu();
+        }
      </script>
 </body>
 </html>
