@@ -84,7 +84,7 @@
          cursor: pointer;
          margin: 10px 0;
          border-radius: 5px;
-         transition: background-color 0.3s ease;
+         transition: background-color 0.3s ease, transform 0.1s ease;
       }
 
       .products-btn {
@@ -98,8 +98,16 @@
       }
 
       .main-btn:active {
-         background-color: #f08c8c;  /* Темнее при нажатии */
+         background-color: #f08c8c;  /* Темнее при нажатии на 10% для красной */
          transform: scale(0.98);  /* Немного уменьшаем кнопку при нажатии */
+      }
+
+      .products-btn:active {
+         background-color: #f08c8c;  /* Темнее при нажатии */
+      }
+
+      .raffles-btn:active {
+         background-color: #f29a60;  /* Темнее для оранжевого */
       }
 
       /* Убираем hover стили, чтобы кнопки не меняли цвет */
