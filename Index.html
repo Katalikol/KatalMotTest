@@ -111,11 +111,11 @@
          cursor: pointer;
          transition: all 500ms ease;
          color: white;
-         background-color: #a8e6cf;
+         background-color: #a8e6cf;  /* Нежно-зеленая кнопка по умолчанию */
       }
 
       button:hover {
-         background-color: #80c8a6;
+         background-color: #80c8a6;  /* При наведении немного темнее */
       }
 
       #error {
@@ -124,8 +124,38 @@
          font-size: 14px;
       }
 
+      /* Для кнопок "Товары" и "Розыгрыши" */
+      .main-btn {
+         width: 220px;
+         height: 60px;
+         font-size: 18px;
+         font-weight: 500;
+         cursor: pointer;
+         margin: 10px 0;
+         border-radius: 5px;
+         transition: background-color 0.3s ease;
+      }
+
+      .products-btn {
+         background-color: #ffb6b6;  /* Нежно-красный */
+         color: white;
+      }
+
+      .raffles-btn {
+         background-color: #ffbc80;  /* Нежно-оранжевый */
+         color: white;
+      }
+
+      .main-btn:hover {
+         background-color: #f08c8c;  /* Темнее при наведении */
+      }
+
+      .main-btn:active {
+         background-color: #ff9b9b;  /* При нажатии */
+      }
+
       #mainMenu {
-         display: none; /* скрыть основное меню по умолчанию */
+         display: none;  /* скрыть основное меню по умолчанию */
       }
     </style>
 </head>
@@ -155,8 +185,8 @@
        </div>
        <div id="content">
          <h1>Это основное меню</h1>
-         <!-- Здесь добавьте кнопки для перехода в другие разделы -->
-         <button id="goToProfile">Перейти в профиль</button>
+         <button class="main-btn products-btn" id="goToProducts">Товары</button>
+         <button class="main-btn raffles-btn" id="goToRaffles">Розыгрыши</button>
        </div>
      </div>
 
@@ -186,7 +216,7 @@
 
             if (name.length < 2) {
                 error.innerText = "Имя слишком короткое";
-                userNameInput.classList.add('error');  // Добавляем класс для красной обводки
+                userNameInput.classList.add('error');
                 return;
             }
 
@@ -209,8 +239,13 @@
             document.getElementById("mainMenu").style.display = "block";  // Показываем основное меню
         }
 
-        document.getElementById("goToProfile").addEventListener("click", () => {
-            alert("Переход в профиль");  // Замените это на переход в профиль
+        // Пример кнопок, которые будут что-то делать в будущем
+        document.getElementById("goToProducts").addEventListener("click", () => {
+            alert("Товары - раздел в разработке!");  // В будущем здесь будет функционал
+        });
+
+        document.getElementById("goToRaffles").addEventListener("click", () => {
+            alert("Розыгрыши - раздел в разработке!");  // В будущем здесь будет функционал
         });
      </script>
 </body>
