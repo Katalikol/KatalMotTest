@@ -77,7 +77,7 @@
 
       /* Для кнопок "Товары" и "Розыгрыши" */
       .main-btn {
-         width: 220px;
+         width: 300px;  /* Увеличена ширина кнопок */
          height: 60px;
          font-size: 18px;
          font-weight: 500;
@@ -97,12 +97,14 @@
          color: white;
       }
 
-      .main-btn:hover {
-         background-color: #f08c8c;  /* Темнее при наведении */
+      .main-btn:active {
+         background-color: #f08c8c;  /* Темнее при нажатии */
+         transform: scale(0.98);  /* Немного уменьшаем кнопку при нажатии */
       }
 
-      .main-btn:active {
-         background-color: #ff9b9b;  /* При нажатии */
+      /* Убираем hover стили, чтобы кнопки не меняли цвет */
+      .main-btn:hover {
+         background-color: inherit;  /* Цвет остается прежним */
       }
 
       #error {
