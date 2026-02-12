@@ -106,7 +106,8 @@
 
       /* Стиль кнопок в меню товаров */
       .product-btn {
-         width: 500px;  /* В 2.5 раза шире */
+         width: 90%;  /* Сделаем кнопки внутри меню товара более гибкими */
+         max-width: 500px; /* Ограничим максимальную ширину кнопок */
          height: 150px;
          font-size: 22px;
          font-weight: 500;
@@ -165,11 +166,24 @@
       .menu-container {
          display: flex;
          flex-direction: column;
-         justify-content: center;
+         justify-content: flex-start;
          align-items: center;
          width: 100%;
          height: 100%;
          box-sizing: border-box;
+         padding: 20px;
+         overflow-y: auto; /* Если контент превышает экран, он будет прокручиваться */
+      }
+
+      /* Обеспечиваем, чтобы меню не выходило за пределы экрана */
+      #productsMenu {
+         overflow-x: hidden;
+         width: 100%;
+         height: 100%;
+         display: flex;
+         flex-direction: column;
+         align-items: center;
+         justify-content: flex-start;
       }
     </style>
 </head>
