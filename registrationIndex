@@ -5,7 +5,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>document</title>
+    <title>Регистрация</title>
     <style>
        @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@200;500&display=swap");
 
@@ -16,7 +16,7 @@
       }
 
       body {
-         font-family: "Arial", sans-serif;
+         font-family: "Montserrat", sans-serif;
          font-weight: 200;
          color: #000000; /* Черный цвет */
          background: #FFFFFF; /* Белый фон */
@@ -138,7 +138,7 @@
          <form id="form">
            <input type="text" placeholder="Имя" id="user_name" required>
            <div id="error"></div>
-           <button id="register">Registr</button>
+           <button id="register">Зарегистрироваться</button>
          </form>
        </div>
      </div>
@@ -168,9 +168,9 @@
                 return;
             }
 
-            let data = { name: name };
+            // НЕ НУЖНО кодировать имя, так как оно и так в нужной кодировке UTF-8
+            let data = { name: name }; 
 
-            let data = { name: encodeURIComponent(name) };  // Кодирование строки в UTF-8
             tg.sendData(JSON.stringify(data));
             tg.close();
         });
@@ -181,6 +181,3 @@
      </script>
 </body>
 </html>
-
-
-
